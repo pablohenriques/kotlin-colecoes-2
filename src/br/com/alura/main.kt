@@ -2,29 +2,39 @@ package br.com.alura
 
 fun main() {
 
-    val assistiramCursoAndroid: Set<String> = setOf("Alex", "Fran", "Gui", "Maria")
-    val assistiramCursoKotlin: Set<String> = setOf("Alex", "Paulo", "Maria")
-    val assistiramAmbos = mutableSetOf<String>()
+    val pedidos: MutableMap<Int, Double> = mutableMapOf(
+        Pair(1, 20.0),
+        Pair(2, 34.0),
+        3 to 50.0
+    )
+    println(pedidos)
 
-    assistiramAmbos.addAll(assistiramCursoAndroid)
-    assistiramAmbos.addAll(assistiramCursoKotlin)
-    assistiramAmbos.add("Ana")
-    assistiramAmbos.add("Ana")
+    val pedido = pedidos[0]
+    pedido?.let { println("pedido $it") }
 
-    println(assistiramAmbos)
+    for (p: Map.Entry<Int, Double> in pedidos) {
+        println("número pedido: ${p.key}")
+        println("valor pedido: ${p.value}")
+    }
 
-    println(assistiramCursoKotlin + assistiramCursoAndroid)
-    println(assistiramCursoKotlin union assistiramCursoAndroid)
+    pedidos[4] = 70.0
+    println(pedidos)
 
-    println(assistiramCursoKotlin - assistiramCursoAndroid)
-    println(assistiramCursoKotlin subtract assistiramCursoAndroid)
+    pedidos.put(5, 80.0)
+    println(pedidos)
 
-    println(assistiramCursoKotlin intersect assistiramCursoAndroid)
+    pedidos[1] = 100.0
+    println(pedidos)
 
-    val assistiramList = assistiramAmbos.toMutableList()
-    assistiramList.add("Alex")
+    pedidos.putIfAbsent(6, 200.0)
+    println(pedidos)
 
-    println(assistiramList)
-    println(assistiramList.toSet())
+    pedidos.putIfAbsent(6, 300.0)
+    println(pedidos)
 
+    pedidos.remove(6)
+    println(pedidos)
+
+    pedidos.remove(3, 50.0)
+    println(pedidos)
 }
